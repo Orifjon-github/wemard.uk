@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('katakulli:seed', function () {
+    Artisan::call('migrate:fresh --database="katakulli"'); // optional arguments
+    Artisan::call('db:seed --class="SettingSeeder" --database="katakulli"');
+})->describe('Running commands for Katakulli');
+
+Artisan::command('venice:seed', function () {
+    Artisan::call('migrate:fresh --database="venice"'); // optional arguments
+    Artisan::call('db:seed --class="VeniceSettingSeeder" --database="venice"');
+})->describe('Running commands for Venice');
